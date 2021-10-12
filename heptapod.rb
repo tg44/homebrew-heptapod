@@ -12,12 +12,12 @@ class Heptapod < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/tg44/homebrew-heptapod/releases/download/v0.1.0/heptapod_0.1.0_Darwin_arm64.tar.gz"
-      sha256 "d12ad6e8463e3e1e700cd3db1f14536ee7e1203bf9730d30a1361550187e4fc6"
+      url "https://github.com/tg44/heptapod/releases/download/v0.1.0/heptapod_0.1.0_Darwin_arm64.tar.gz"
+      sha256 "d0cfb642f52690957f483e2aa4fb58b16b5ec184bf3f1c48d2515fd9e60c1195"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/tg44/homebrew-heptapod/releases/download/v0.1.0/heptapod_0.1.0_Darwin_x86_64.tar.gz"
-      sha256 "0df56c8edd80cf8d266cf068957296fb15944c67ca386e967901c2411c10a23d"
+      url "https://github.com/tg44/heptapod/releases/download/v0.1.0/heptapod_0.1.0_Darwin_x86_64.tar.gz"
+      sha256 "25e63fd8183e24ccf8452f9ba64145b94671c6991290ae91a57139fe7e4c8d80"
     end
   end
 
