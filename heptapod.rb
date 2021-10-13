@@ -5,24 +5,25 @@
 class Heptapod < Formula
   desc "This is a command line application to manage and fine-tune Time Machine exclude paths."
   homepage "https://github.com/tg44/heptapod"
-  version "0.1.0"
+  version "0.1.1"
   license "MIT"
   bottle :unneeded
   depends_on :macos
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/tg44/heptapod/releases/download/v0.1.0/heptapod_0.1.0_Darwin_arm64.tar.gz"
-      sha256 "d0cfb642f52690957f483e2aa4fb58b16b5ec184bf3f1c48d2515fd9e60c1195"
+      url "https://github.com/tg44/heptapod/releases/download/v0.1.1/heptapod_0.1.1_Darwin_arm64.tar.gz"
+      sha256 "43c455c0d4fba413a87a4fcd818cdcd0e08368ac4bbef28241a393480500e529"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/tg44/heptapod/releases/download/v0.1.0/heptapod_0.1.0_Darwin_x86_64.tar.gz"
-      sha256 "25e63fd8183e24ccf8452f9ba64145b94671c6991290ae91a57139fe7e4c8d80"
+      url "https://github.com/tg44/heptapod/releases/download/v0.1.1/heptapod_0.1.1_Darwin_x86_64.tar.gz"
+      sha256 "b279010c94cea34502698744466bc3a7a838d91c9675b578fe29a2a7652073db"
     end
   end
 
   def install
     bin.install "heptapod"
+    bin.install Dir["rules/*"]
   end
 
   def caveats; <<~EOS
