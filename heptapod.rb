@@ -5,28 +5,26 @@
 class Heptapod < Formula
   desc "This is a command line application to manage and fine-tune Time Machine exclude paths."
   homepage "https://github.com/tg44/heptapod"
-  version "0.1.9"
+  version "0.2.0"
   license "MIT"
   depends_on :macos
 
-  on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/tg44/heptapod/releases/download/v0.1.9/heptapod_Darwin_arm64.tar.gz"
-      sha256 "39b4c6539ca2cb1247d472a2fb4bb80c5e8c0396a16f55494409e225cada49a4"
+  if Hardware::CPU.intel?
+    url "https://github.com/tg44/heptapod/releases/download/v0.2.0/heptapod_Darwin_x86_64.tar.gz"
+    sha256 "61872a339be30626fa0506fa74cbdf02a43fb0f9ecdd9f7ed032fc1753037f97"
 
-      def install
-        bin.install "heptapod"
-        prefix.install Dir["rules"]
-      end
+    def install
+      bin.install "heptapod"
+      prefix.install Dir["rules"]
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/tg44/heptapod/releases/download/v0.1.9/heptapod_Darwin_x86_64.tar.gz"
-      sha256 "c83fe36e381a64cf0f00f2716cf2f26434552fb086a5e99a3c71c7bf10a660d7"
+  end
+  if Hardware::CPU.arm?
+    url "https://github.com/tg44/heptapod/releases/download/v0.2.0/heptapod_Darwin_arm64.tar.gz"
+    sha256 "78ebcd12728ea48842b83426bda22b08790ca941e8d111dc58364ba92d6b3fd1"
 
-      def install
-        bin.install "heptapod"
-        prefix.install Dir["rules"]
-      end
+    def install
+      bin.install "heptapod"
+      prefix.install Dir["rules"]
     end
   end
 
@@ -34,5 +32,11 @@ class Heptapod < Formula
     <<~EOS
       Start with `heptapod -h`!
     EOS
+  end
+
+  service do
+    run [opt_bin/"heptapod", "run"]
+    run_type :cron
+    cron "0 * * * *"
   end
 end
